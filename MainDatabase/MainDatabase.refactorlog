@@ -40,4 +40,37 @@
     <Property Name="ParentElementType" Value="SqlTable" />
     <Property Name="NewName" Value="[CountryID]" />
   </Operation>
+  <Operation Name="Rename Refactor" Key="dee92111-e768-486b-8b8e-1bc69b35b923" ChangeDateTime="11/07/2014 22:01:42">
+    <Property Name="ElementName" Value="[dbo].[People].[Id]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[People]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="[PersonID]" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="aa84d974-9874-47ff-944d-04c147dec075" ChangeDateTime="11/07/2014 22:04:29">
+    <Property Name="ElementName" Value="[dbo].[Addresses].[Id]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[Addresses]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="[AddressID]" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="0302d90d-1dd8-4975-b187-4cacffcce9f4" ChangeDateTime="11/07/2014 22:04:49">
+    <Property Name="ElementName" Value="[dbo].[Addresses].[Street]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[Addresses]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="StreetName" />
+  </Operation>
+  <Operation Name="Move Schema" Key="baa1b112-317c-4103-b4dd-7e851de3fb90" ChangeDateTime="11/07/2014 22:07:21">
+    <Property Name="ElementName" Value="[dbo].[People]" />
+    <Property Name="ElementType" Value="SqlTable" />
+    <Property Name="NewSchema" Value="second" />
+    <Property Name="IsNewSchemaExternal" Value="False" />
+  </Operation>
+  <Operation Name="Move Schema" Key="f4290de4-085b-4de1-bb90-f24f4fb8ec00" ChangeDateTime="11/07/2014 22:09:03">
+    <Property Name="ElementName" Value="[dbo].[Addresses]" />
+    <Property Name="ElementType" Value="SqlTable" />
+    <Property Name="NewSchema" Value="second" />
+    <Property Name="IsNewSchemaExternal" Value="False" />
+  </Operation>
 </Operations>

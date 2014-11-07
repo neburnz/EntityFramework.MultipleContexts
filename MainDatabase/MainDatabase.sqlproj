@@ -67,6 +67,8 @@
     <Build Include="Schemas\second.sql" />
     <Build Include="Tables\first\Countries.sql" />
     <Build Include="Tables\first\States.sql" />
+    <Build Include="Tables\second\People.sql" />
+    <Build Include="Tables\second\Addresses.sql" />
   </ItemGroup>
   <ItemGroup>
     <RefactorLog Include="MainDatabase.refactorlog" />
