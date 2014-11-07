@@ -1,0 +1,43 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Operations Version="1.0" xmlns="http://schemas.microsoft.com/sqlserver/dac/Serialization/2012/02">
+  <Operation Name="Rename Refactor" Key="10e1d930-4a4a-4df4-95ae-ccd6989b9365" ChangeDateTime="11/07/2014 13:19:10">
+    <Property Name="ElementName" Value="[dbo].[Countries].[Abbreviation]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[Countries]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="Code" />
+  </Operation>
+  <Operation Name="Move Schema" Key="f63acdad-9999-43fc-83e8-dac5fd809f91" ChangeDateTime="11/07/2014 13:20:18">
+    <Property Name="ElementName" Value="[dbo].[Countries]" />
+    <Property Name="ElementType" Value="SqlTable" />
+    <Property Name="NewSchema" Value="first" />
+    <Property Name="IsNewSchemaExternal" Value="False" />
+  </Operation>
+  <Operation Name="Move Schema" Key="26f8c2bb-954c-4cdf-86bb-7b1d68af2e04" ChangeDateTime="11/07/2014 13:23:33">
+    <Property Name="ElementName" Value="[dbo].[States]" />
+    <Property Name="ElementType" Value="SqlTable" />
+    <Property Name="NewSchema" Value="first" />
+    <Property Name="IsNewSchemaExternal" Value="False" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="95e2a5e7-3213-43ef-9550-35535f9489fd" ChangeDateTime="11/07/2014 13:40:15">
+    <Property Name="ElementName" Value="[first].[Countries].[Id]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[first].[Countries]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="[CountryID]" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="b9a90c76-8b47-41da-8f0b-68d2f13f5189" ChangeDateTime="11/07/2014 13:40:43">
+    <Property Name="ElementName" Value="[first].[States].[Id]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[first].[States]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="[StateID]" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="3db00ee2-c5b4-4c18-b3b0-d7b3b3f58c3a" ChangeDateTime="11/07/2014 13:41:01">
+    <Property Name="ElementName" Value="[first].[States].[IdCountry]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[first].[States]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="[CountryID]" />
+  </Operation>
+</Operations>
