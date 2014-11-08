@@ -51,6 +51,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Domain\Country.cs" />
+    <Compile Include="Domain\Extensions\FirstModel.cs" />
     <Compile Include="Domain\FirstModel.cs" />
     <Compile Include="Domain\State.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
