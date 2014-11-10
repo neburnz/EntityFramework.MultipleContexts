@@ -8,7 +8,6 @@ using SecondClassLibrary.Domain;
 using System.Data.SqlClient;
 using System.Configuration;
 using System.Data;
-using System.Transactions;
 
 namespace MainConsoleApplication
 {
@@ -57,54 +56,65 @@ namespace MainConsoleApplication
         {
             string connectionString = ConfigurationManager.ConnectionStrings["mainDatabase"].ConnectionString;
             
-            using (var scope = new TransactionScope(TransactionScopeOption.RequiresNew))
+            using (var connection = new SqlConnection(connectionString))
             {
-                using (var connection = new SqlConnection(connectionString))
+                connection.Open();
+
+                using (var transaction = connection.BeginTransaction(IsolationLevel.ReadCommitted))
                 {
-                    connection.Open();
-                
-                    using (FirstModel firstModel = new FirstModel(connection, false))
+                    try
                     {
-                        Country country = new Country()
+                        using (FirstModel firstModel = new FirstModel(connection, false))
                         {
-                            Name = "Mexico",
-                            Code = "MX",
-                            CreationDate = DateTime.Now,
-                            Order = 1
-                        };
-                        State state = new State()
-                        {
-                            Name = "Tabasco",
-                            Budget = new decimal(1000),
-                            Country = country
-                        };
+                            firstModel.Database.UseTransaction(transaction);
 
-                        firstModel.Countries.Add(country);
-                        firstModel.States.Add(state);
-                        firstModel.SaveChanges();
+                            Country country = new Country()
+                            {
+                                Name = "Mexico",
+                                Code = "MX",
+                                CreationDate = DateTime.Now,
+                                Order = 1
+                            };
+                            State state = new State()
+                            {
+                                Name = "Tabasco",
+                                Budget = new decimal(1000),
+                                Country = country
+                            };
+
+                            firstModel.Countries.Add(country);
+                            firstModel.States.Add(state);
+                            firstModel.SaveChanges();
+                        }
+
+                        using (SecondModel secondModel = new SecondModel(connection, false))
+                        {
+                            secondModel.Database.UseTransaction(transaction);
+
+                            Person person = new Person()
+                            {
+                                Name = "John Smith",
+                                Married = false
+                            };
+                            Address address = new Address()
+                            {
+                                StreetName = "Zocalo",
+                                StreetNumber = 99,
+                                Person = person
+                            };
+
+                            secondModel.People.Add(person);
+                            secondModel.Addresses.Add(address);
+                            secondModel.SaveChanges();
+                        }
+
+                        transaction.Commit();
                     }
-
-                    using (SecondModel secondModel = new SecondModel(connection, false))
+                    catch (Exception)
                     {
-                        Person person = new Person()
-                        {
-                            Name = "John Smith",
-                            Married = false
-                        };
-                        Address address = new Address()
-                        {
-                            StreetName = "Zocalo",
-                            StreetNumber = 99,
-                            Person = person
-                        };
-
-                        secondModel.People.Add(person);
-                        secondModel.Addresses.Add(address);
-                        secondModel.SaveChanges();
+                        transaction.Rollback();
                     }
                 }
-
-                scope.Complete();
             }
         }
     }
